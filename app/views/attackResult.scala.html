@@ -1,0 +1,34 @@
+@(attackOutcome: String)(implicit messages: Messages)
+@import riskGame.RiskMap
+@import riskGame.Attack
+<body style="background-color:#00b7a9;"></body>
+<style>
+    span.a {
+      display: inline-block;
+      width: 100px;
+      height: 75px;
+      padding: 0px;
+      border: 5px solid blue;
+      background-color: lightgray;
+    }
+</style>
+<center>
+    <h1>Results: </h1>
+    <h2>
+        @attackOutcome
+    </h2>
+
+    <h2><a href="@routes.AttackController.findNext()">Continue</a><h2>
+    <p>
+        <img src="https://www.alternatehistory.com/forum/attachments/blank-risk-png.30809/" alt="Map" width="850" height="600" align="left">
+        @for(continent <- RiskMap.continents) {
+            <h3>@continent.name :</h3>
+            @for(Territory <- continent.territories) {
+                <span class = "a">
+                    @Territory.name <br> Owner: @Territory.owner.name <br> Armies: @Territory.numArmies
+                </span>
+            }
+            <br>
+        }
+    </p>
+</center>

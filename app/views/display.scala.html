@@ -1,0 +1,30 @@
+@import riskGame.Player
+@import helper._
+@(players: Array[Player])(territories: Html)
+<style>
+    div {
+        height: 200px;
+        width: 400px;
+
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -200px;
+    }
+</style>
+<div>
+    <center>
+        <h1>List of Players</h1>
+        <body style="background-color:#00b7a9;">
+            <li>
+                @for(player <- players){
+                    <ul>@player.toString</ul>
+                }
+            </li>
+
+            @territories
+        </body>
+    </center>
+</div>
+
